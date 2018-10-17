@@ -1,21 +1,23 @@
 /**
- * @param  {string} message
+ * @param  {object} business
+ * @param  {string} business.id
+ * @param  {string} business.name
  * @return {Element}
  */
-export function createMessage (message) {
+export function createBusinessEl (business) {
   const el = document.createElement('div')
-  const text = document.createTextNode(message)
+  const text = document.createTextNode(business.name)
   el.appendChild(text)
 
   return el
 }
 
 /**
- * @param  {Element} message
+ * @param  {Element} businessEl
  * @return {void}
  */
-export function appendMessage (message) {
-  const messagesEl = document.querySelector('#messages')
+export function mount (businessEl) {
+  const entryEl = document.querySelector('#business-list')
 
-  messagesEl.appendChild(message)
+  entryEl.appendChild(businessEl)
 }

@@ -3,7 +3,7 @@
  * @return {string}
  */
 function createID () {
-  return Math.random().toString().split('.').join('')
+  return Math.random().toString().replace('.', '')
 }
 
 module.exports = {

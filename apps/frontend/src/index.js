@@ -1,5 +1,5 @@
 import { date } from '@mybiz/shared'
-import { createMessage, appendMessage } from './dom'
+import { createBusinessEl, mount } from './dom'
 
 const API_URL = 'http://localhost:8000'
 
@@ -14,7 +14,7 @@ const request = new Request(`${API_URL}/hello`, {
   cache: 'default'
 })
 
-fetch(`${API_URL}/hello`, {
+fetch(`${API_URL}/businesses`, {
   method: 'GET',
   mode: 'cors',
   headers: new Headers({
@@ -23,9 +23,8 @@ fetch(`${API_URL}/hello`, {
 })
   .then(response => response.json())
   .then((data) => {
-    appendMessage(createMessage(date.format()))
-
-    data.messages.forEach((messageString) => {
-      appendMessage(createMessage(messageString))
+    data.businesses.forEach((business) => {
+      const el = createBusinessEl(business)
+      mount(el)
     })
   })
