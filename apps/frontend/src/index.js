@@ -1,4 +1,4 @@
-import { dateFormat } from '@mybiz/shared'
+import { date } from '@mybiz/shared'
 import { createMessage, appendMessage } from './dom'
 
 const API_URL = 'http://localhost:8000'
@@ -23,7 +23,7 @@ fetch(`${API_URL}/hello`, {
 })
   .then(response => response.json())
   .then((data) => {
-    appendMessage(createMessage(dateFormat.simple()))
+    appendMessage(createMessage(date.format()))
 
     data.messages.forEach((messageString) => {
       appendMessage(createMessage(messageString))

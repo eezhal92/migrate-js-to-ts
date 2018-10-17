@@ -1,9 +1,9 @@
 const add = require('./add')
-const dateFormat = require('./date-format')
+const date = require('./date')
 const identity = require('./identity')
 
 module.exports = {
   add,
-  dateFormat,
+  date,
   identity,
 }

@@ -3,10 +3,10 @@
  *
  * @return {string}
  */
-function simple () {
+function format () {
   return 'Jum\'at, 19 Oktober 2018'
 }
 
 module.exports = {
-  simple,
+  format,
 }
