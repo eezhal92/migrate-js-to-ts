@@ -1,15 +1,22 @@
+import { date } from '@mybiz/shared'
+
 /**
  * @param  {object} business
  * @param  {string} business.id
  * @param  {string} business.name
+ * @param  {string} business.createdAt
  * @return {Element}
  */
 export function createBusinessEl (business) {
-  const el = document.createElement('div')
-  const text = document.createTextNode(business.name)
-  el.appendChild(text)
+  const containerEl = document.createElement('div')
 
-  return el
+  const nameEl = createNameEl(business.name)
+  const createdAtEl = createCreatedAtEl(business.createdAt)
+
+  containerEl.appendChild(nameEl)
+  containerEl.appendChild(createdAtEl)
+
+  return containerEl
 }
 
 /**
@@ -20,4 +27,27 @@ export function mount (businessEl) {
   const entryEl = document.querySelector('#business-list')
 
   entryEl.appendChild(businessEl)
+}
+
+/**
+ * @param  {string} name
+ * @return {Element}
+ */
+function createNameEl (name) {
+  const nameEl = document.createElement('div')
+  nameEl.appendChild(document.createTextNode(name))
+
+  return nameEl
+}
+
+/**
+ * @param  {string} createdAt
+ * @return {Element}
+ */
+function createCreatedAtEl (createdAt) {
+  const formattedCreatedAt = date.format(createdAt)
+  const createdAtEl = document.createElement('div')
+  createdAtEl.appendChild(document.createTextNode(formattedCreatedAt))
+
+  return createdAtEl
 }
