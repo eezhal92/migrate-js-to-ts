@@ -10,6 +10,7 @@ import { date } from '@mybiz/shared'
 export function createBusinessEl (business) {
   const $container = document.createElement('div')
   $container.classList.add('business')
+  $container.setAttribute('tabindex', 0)
 
   const $name = createNameEl(business.name)
   const $createdAt = createCreatedAtEl(business.createdAt)
@@ -36,6 +37,7 @@ export function mount (businessEl) {
  */
 function createNameEl (name) {
   const $name = document.createElement('div')
+  $name.classList.add('name')
   $name.appendChild(document.createTextNode(name))
 
   return $name
@@ -48,6 +50,7 @@ function createNameEl (name) {
 function createCreatedAtEl (createdAt) {
   const formattedCreatedAt = date.format(createdAt)
   const $createdAt = document.createElement('div')
+  $createdAt.classList.add('created-at')
   $createdAt.appendChild(document.createTextNode(formattedCreatedAt))
 
   return $createdAt

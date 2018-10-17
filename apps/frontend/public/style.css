@@ -1,0 +1,32 @@
+html, body {
+  font-size: 18px;
+  font-family: sans-serif;
+  padding: 0;
+  margin: 0;
+  color: #333;
+}
+
+.container {
+  width: 900px;
+  padding: 0 1rem;
+  margin: 0 auto;
+}
+
+.business {
+  width: 240px;
+  padding: 20px;
+  margin: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+.business .name {
+  font-weight: bold;
+}
+
+.business .created-at {
+  font-size: .75rem;
+  color: #666;
+}
