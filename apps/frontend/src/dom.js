@@ -8,15 +8,16 @@ import { date } from '@mybiz/shared'
  * @return {Element}
  */
 export function createBusinessEl (business) {
-  const containerEl = document.createElement('div')
+  const $container = document.createElement('div')
+  $container.classList.add('business')
 
-  const nameEl = createNameEl(business.name)
-  const createdAtEl = createCreatedAtEl(business.createdAt)
+  const $name = createNameEl(business.name)
+  const $createdAt = createCreatedAtEl(business.createdAt)
 
-  containerEl.appendChild(nameEl)
-  containerEl.appendChild(createdAtEl)
+  $container.appendChild($name)
+  $container.appendChild($createdAt)
 
-  return containerEl
+  return $container
 }
 
 /**
@@ -24,9 +25,9 @@ export function createBusinessEl (business) {
  * @return {void}
  */
 export function mount (businessEl) {
-  const entryEl = document.querySelector('#business-list')
+  const $entry = document.querySelector('#business-list')
 
-  entryEl.appendChild(businessEl)
+  $entry.appendChild(businessEl)
 }
 
 /**
@@ -34,10 +35,10 @@ export function mount (businessEl) {
  * @return {Element}
  */
 function createNameEl (name) {
-  const nameEl = document.createElement('div')
-  nameEl.appendChild(document.createTextNode(name))
+  const $name = document.createElement('div')
+  $name.appendChild(document.createTextNode(name))
 
-  return nameEl
+  return $name
 }
 
 /**
@@ -46,8 +47,8 @@ function createNameEl (name) {
  */
 function createCreatedAtEl (createdAt) {
   const formattedCreatedAt = date.format(createdAt)
-  const createdAtEl = document.createElement('div')
-  createdAtEl.appendChild(document.createTextNode(formattedCreatedAt))
+  const $createdAt = document.createElement('div')
+  $createdAt.appendChild(document.createTextNode(formattedCreatedAt))
 
-  return createdAtEl
+  return $createdAt
 }

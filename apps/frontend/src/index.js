@@ -24,7 +24,7 @@ fetch(`${API_URL}/businesses`, {
   .then(response => response.json())
   .then((data) => {
     data.businesses.forEach((business) => {
-      const el = createBusinessEl(business)
-      mount(el)
+      const $business = createBusinessEl(business)
+      mount($business)
     })
   })
