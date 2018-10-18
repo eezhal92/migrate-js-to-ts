@@ -1,5 +1,5 @@
 import * as cors from 'cors'
-import * as routes from './routes'
+import routes from './routes'
 import express = require('express')
 
 const app = express()

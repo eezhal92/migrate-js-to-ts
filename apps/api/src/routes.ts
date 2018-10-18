@@ -1,9 +1,8 @@
-const express = require('express')
-const { add } = require('@mybiz/shared')
+import { Router }from 'express'
+import { add } from '@mybiz/shared'
+import * as repo from './repo'
 
-const repo = require('./repo')
-
-const routes = express.Router()
+const routes = Router()
 
 routes.get('/hello', (request, response) => {
   return response.json({
@@ -38,4 +37,4 @@ function getSpesificBusiness (request, response) {
   })
 }
 
-module.exports = routes
+export default routes

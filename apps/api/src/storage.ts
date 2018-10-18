@@ -1,4 +1,4 @@
-const { identity, date } = require('@mybiz/shared')
+import { identity, date } from '@mybiz/shared'
 
 const businesses = [
   {
@@ -18,6 +18,6 @@ const businesses = [
   },
 ]
 
-module.exports = {
+export default {
   businesses,
 }

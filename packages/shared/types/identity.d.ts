@@ -1,4 +1,4 @@
-namespace identity {
+declare namespace identity {
   /**
    * createID .d.ts doc
    */

@@ -1,20 +1,20 @@
-const { businesses } = require('./storage')
-const { identity, date } = require('@mybiz/shared')
+import storage from './storage'
+import { identity, date } from '@mybiz/shared'
 
 /**
  * Get all businesses
  * @return {Array}
  */
-function findAll () {
-  return businesses
+export function findAll () {
+  return storage.businesses
 }
 
 /**
  * Find spesific business by its ID
  * @return {object}
  */
-function findById (id) {
-  return businesses.find((business) => business.id === id)
+export function findById (id) {
+  return storage.businesses.find((business) => business.id === id)
 }
 
 /**
@@ -23,7 +23,7 @@ function findById (id) {
  * @param  {string} data.name
  * @return {object}
  */
-function create (data) {
+export function create (data) {
   const { name } = data
   const business = {
     id: identity.createID(),
@@ -31,13 +31,8 @@ function create (data) {
     createdAt: date.now(),
   }
 
-  businesses.push(business)
+  storage.businesses.push(business)
 
   return business
 }
 
-module.exports = {
-  create,
-  findAll,
-  findById,
-}

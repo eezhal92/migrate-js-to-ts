@@ -1,4 +1,4 @@
-namespace date {
+declare namespace date {
   /**
    * d.ts format docs
    * @param date
@@ -10,6 +10,6 @@ namespace date {
    * @param date
    */
   export function now() : string;
-};
+}
 
 export default date
