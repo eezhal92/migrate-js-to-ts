@@ -1,6 +1,6 @@
-import { identity, date } from '@mybiz/shared'
+import { identity, date, Business } from '@mybiz/shared'
 
-const businesses = [
+const businesses: Business[] = [
   {
     id: identity.createID(),
     name: 'Perusahaan A',

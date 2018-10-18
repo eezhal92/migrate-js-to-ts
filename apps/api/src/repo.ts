@@ -1,29 +1,28 @@
 import storage from './storage'
-import { identity, date } from '@mybiz/shared'
+import { identity, date, Business } from '@mybiz/shared'
 
 /**
  * Get all businesses
- * @return {Array}
  */
-export function findAll () {
+export function findAll () : Business[]{
   return storage.businesses
 }
 
 /**
  * Find spesific business by its ID
- * @return {object}
  */
-export function findById (id) {
-  return storage.businesses.find((business) => business.id === id)
+export function findById (id) : Business | null {
+  return storage.businesses.find((business) => business.id === id) || null
+}
+
+export type NewBusinessData = {
+  name: string;
 }
 
 /**
  * Create and persist new business
- * @param  {object} data
- * @param  {string} data.name
- * @return {object}
  */
-export function create (data) {
+export function create (data: NewBusinessData) : Business {
   const { name } = data
   const business = {
     id: identity.createID(),

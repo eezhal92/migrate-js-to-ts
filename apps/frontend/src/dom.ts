@@ -1,10 +1,4 @@
-import { date } from '@mybiz/shared'
-
-export interface Business {
-  id: string;
-  name: string;
-  createdAt: string;
-}
+import { date, Business } from '@mybiz/shared'
 
 export function createBusinessEl (business: Business) : Element {
   const $container = document.createElement('div')
