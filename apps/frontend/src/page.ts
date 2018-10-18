@@ -2,11 +2,15 @@ import { createBusinessEl, mount } from './dom'
 
 const API_URL = 'http://localhost:8000'
 
-/**
- * @param  {string} fullpath
- * @return {object|null}
- */
-export function getPageMeta (fullpath) {
+export type PageMeta = {
+  pageName: string;
+} & {
+  params?: {
+    [prop: string]: string
+  }
+}
+
+export function getPageMeta (fullpath: string) : PageMeta|null {
   const path = fullpath
     .split('/')
     .filter((_, i) => i !== 0)
@@ -28,11 +32,7 @@ export function getPageMeta (fullpath) {
   return null
 }
 
-/**
- * @param  {string} pageName
- * @return {Element}
- */
-export function addPage (pageName) {
+export function addPage (pageName: string) : Element {
   if (!pageName) {
     return
   }
@@ -40,20 +40,14 @@ export function addPage (pageName) {
   const main = document.querySelector('#main-content')
   const templateID = `#${pageName}-template`
 
-  const template = document.querySelector(templateID)
+  const template = document.querySelector(templateID) as HTMLTemplateElement
   main.innerHTML = ''
   main.appendChild(template.content.cloneNode(true))
 
   return main.firstElementChild;
 }
 
-/**
- * @param  {object}  meta
- * @param  {string}  meta.pageName
- * @param  {object?} meta.params
- * @return {Promise}
- */
-export function generatePageContent (meta) {
+export function generatePageContent (meta: PageMeta) : Promise<any> {
   const { pageName, params = {} } = meta
 
   if (pageName === 'home') {
@@ -65,10 +59,7 @@ export function generatePageContent (meta) {
   return Promise.reject(new Error(`No function handler for page name: ${pageName}`))
 }
 
-/**
- * @return {Promise}
- */
-function generateHomeContent () {
+function generateHomeContent () : Promise<any> {
   return fetch(`${API_URL}/businesses`)
     .then(response => response.json())
     .then((data) => {
@@ -79,10 +70,7 @@ function generateHomeContent () {
     })
 }
 
-/**
- * @param {Promise} businessId
- */
-function generateBusinessDetailContent (businessId) {
+function generateBusinessDetailContent (businessId: string) : Promise<any> {
   const $title = document.querySelector('h1')
 
   return fetch(`${API_URL}/businesses/${businessId}`)
