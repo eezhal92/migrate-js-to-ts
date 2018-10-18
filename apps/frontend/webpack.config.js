@@ -1,7 +1,7 @@
 const path = require('path')
 
 module.exports = {
-  entry: path.resolve(__dirname, 'src/index.js'),
+  entry: path.resolve(__dirname, 'src/index.ts'),
   output: {
     path: path.resolve(__dirname, 'public/dist'),
     publicPath: path.resolve(__dirname, '/dist'),
@@ -9,13 +9,17 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js?$/,
+        test: /\.ts$/,
         loader: 'babel-loader',
+      },
+      {
+        test: /\.js$/,
+        loader: 'source-map-loader',
       }
     ],
   },
   resolve: {
-    extensions: ['.js'],
+    extensions: ['.js', '.ts'],
   },
   devServer: {
     port: 3000,

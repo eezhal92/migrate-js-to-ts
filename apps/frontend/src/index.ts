@@ -1,7 +1,7 @@
 import page from 'page'
 import { getPageMeta, addPage, generatePageContent } from './page'
 
-page('*', function (ctx) {
+page('*', function (ctx: PageJS.Context) {
   const meta = getPageMeta(ctx.path)
   const page = addPage(meta.pageName)
 

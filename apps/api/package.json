@@ -9,12 +9,12 @@
   },
   "dependencies": {
     "@mybiz/shared": "^0.1.0",
-    "@types/cors": "^2.8.4",
-    "@types/express": "^4.16.0",
     "cors": "^2.8.4",
     "express": "^4.16.3"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.4",
+    "@types/express": "^4.16.0",
     "concurrently": "^4.0.1",
     "nodemon": "^1.18.4",
     "typescript": "^3.1.3"
