@@ -1,13 +1,16 @@
+import page from 'page'
 import { date } from '@mybiz/shared'
-import { createBusinessEl, mount } from './dom'
+import { getPageMeta, addPage, generatePageContent } from './page'
 
-const API_URL = 'http://localhost:8000'
+page('*', function (ctx) {
+  const meta = getPageMeta(ctx.path)
+  const page = addPage(meta.pageName)
 
-fetch(`${API_URL}/businesses`)
-  .then(response => response.json())
-  .then((data) => {
-    data.businesses.forEach((business) => {
-      const $business = createBusinessEl(business)
-      mount($business)
+  generatePageContent(meta)
+    .then(() => {
+      const heading = page.querySelector('h1');
+      heading.focus();
     })
-  })
+})
+
+page('/home')

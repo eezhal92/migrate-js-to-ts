@@ -10,23 +10,25 @@ import { date } from '@mybiz/shared'
 export function createBusinessEl (business) {
   const $container = document.createElement('div')
   $container.classList.add('business')
-  $container.setAttribute('tabindex', 0)
 
   const $name = createNameEl(business.name)
+  const $link = createLinkEl(business)
   const $createdAt = createCreatedAtEl(business.createdAt)
 
   $container.appendChild($name)
+  $container.appendChild($link)
   $container.appendChild($createdAt)
 
   return $container
 }
 
 /**
+ * @param  {string}  targetEntry query selector of entru
  * @param  {Element} businessEl
  * @return {void}
  */
-export function mount (businessEl) {
-  const $entry = document.querySelector('#business-list')
+export function mount (targetEntry, businessEl) {
+  const $entry = document.querySelector(targetEntry)
 
   $entry.appendChild(businessEl)
 }
@@ -41,6 +43,21 @@ function createNameEl (name) {
   $name.appendChild(document.createTextNode(name))
 
   return $name
+}
+
+/**
+ * @param  {object} business
+ * @param  {string} business.id
+ * @param  {string} business.name
+ * @return {Element}
+ */
+function createLinkEl (business) {
+  const $link = document.createElement('a')
+  $link.setAttribute('href', `/business/${business.id}`)
+  $link.setAttribute('aria-label', `View ${business.name} detail`)
+  $link.appendChild(document.createTextNode('View'))
+
+  return $link
 }
 
 /**

@@ -8,14 +8,30 @@
 </head>
 <body>
   <div id="app">
-    <div class="container">
-      <h1>MyBiz</h1>
-
-      <h2>Temukan partner bisnismu di sini</h2>
-    </div>
-
-    <div id="business-list" class="container"></div>
+    <main id="main-content"></main>
   </div>
+
+  <template id="home-template">
+    <article>
+      <div class="container">
+        <h1>MyBiz</h1>
+
+        <h2>Temukan partner bisnismu di sini</h2>
+      </div>
+
+      <div id="business-list" class="container"></div>
+    </article>
+  </template>
+
+  <template id="business-template">
+    <article>
+      <div class="container">
+        <h1>Detail</h1>
+
+        <div id="business-data"></div>
+      </div>
+    </article>
+  </template>
 
   <script src="/dist/main.js"></script>
 </body>
