@@ -1,4 +1,4 @@
-import { Router }from 'express'
+import { Router, Request, Response } from 'express'
 import { add } from '@mybiz/shared'
 import * as repo from './repo'
 
@@ -16,13 +16,13 @@ routes.get('/hello', (request, response) => {
 routes.get('/businesses', getBusiness)
 routes.get('/businesses/:id', getSpesificBusiness)
 
-function getBusiness (request, response) {
+function getBusiness (request: Request, response: Response) {
   return response.json({
     businesses: repo.findAll(),
   })
 }
 
-function getSpesificBusiness (request, response) {
+function getSpesificBusiness (request: Request, response: Response) {
   const { id: businessId } = request.params
   const business = repo.findById(businessId)
 
