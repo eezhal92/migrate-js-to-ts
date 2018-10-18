@@ -14,15 +14,17 @@ routes.get('/hello', (request, response) => {
   })
 })
 
-routes.get('/businesses', (request, response) => {
+routes.get('/businesses', getBusiness)
+routes.get('/businesses/:id', getSpesificBusiness)
+
+function getBusiness (request, response) {
   return response.json({
     businesses: repo.findAll(),
   })
-})
+}
 
-routes.get('/businesses/:id', (request, response) => {
+function getSpesificBusiness (request, response) {
   const { id: businessId } = request.params
-
   const business = repo.findById(businessId)
 
   if (!business) {
@@ -34,6 +36,6 @@ routes.get('/businesses/:id', (request, response) => {
   return response.json({
     business,
   })
-})
+}
 
 module.exports = routes

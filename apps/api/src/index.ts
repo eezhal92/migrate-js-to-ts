@@ -1,6 +1,6 @@
-const cors = require('cors')
-const express = require('express')
-const routes = require('./routes')
+import * as cors from 'cors'
+import * as routes from './routes'
+import express = require('express')
 
 const app = express()
 
